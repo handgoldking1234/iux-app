@@ -129,21 +129,6 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 .plus.open:after{transform:translate(-50%,-50%) scaleY(0)}
 .empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:40px 0}
 
-/* ===== 배우기 ===== */
-.learn{background:var(--gray)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.c{background:#fff;padding:30px 30px 34px;box-shadow:0 1px 2px rgba(0,0,0,.04);cursor:pointer;text-align:center;border:0;transition:box-shadow .35s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;position:relative;z-index:0}.c:hover{z-index:1}
-.c:hover,.c:focus-visible{box-shadow:inset 0 0 0 14px #111,0 20px 44px rgba(0,0,0,.14);outline:none}.c:hover h3{color:#000}
-.c .ph{aspect-ratio:16/10;overflow:hidden;background:#ddd;margin-bottom:20px;position:relative}
-.c .ph img{width:100%;height:100%;object-fit:cover}
-.c .ph em{position:absolute;left:10px;top:10px;font-style:normal;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:19px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.c h3{margin:0 0 8px;font-size:16px;font-weight:700}
-.c p{margin:0 0 18px;font-size:13px;color:var(--mute);line-height:1.6}
-.c .meta{margin-top:auto;font:600 12px var(--en);color:#555;letter-spacing:.02em}
-.c .meta b{color:var(--acc)}
-.c.hide{display:none}
-.mlink{display:table;margin:40px auto 0;border:0;background:none;cursor:pointer;font:700 13px var(--en);padding:0 0 6px;border-bottom:1.5px solid #111}
-.mlink:hover{color:var(--acc);border-color:var(--acc)}
 
 /* ===== 함께 + 푸터 ===== */
 .foot{background:var(--dark);color:#fff;position:relative;overflow:hidden}
@@ -182,7 +167,7 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 .hero .cap,.hero .bg-par{will-change:transform}
 .prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(0);z-index:60;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}}
-@media (max-width:980px){.in{padding:0 24px}.gnb{display:none}.works{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:980px){.in{padding:0 24px}.gnb{display:none}.works{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){
  .in{padding:0 20px}
  .hd{padding:0 16px}.util .ghost{display:none}
@@ -196,7 +181,6 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
  .recent::-webkit-scrollbar{display:none}.recent>span{display:block;margin-bottom:8px}.recent a{display:inline-block;margin-right:6px}
  .tabs::-webkit-scrollbar{display:none}.tabs button{flex:none;white-space:nowrap;scroll-snap-align:start}
  .works{grid-template-columns:repeat(2,1fr);gap:26px 12px}.w .nm h3{font-size:14px}.w .tag span{font-size:9.5px;padding:4px 5px}
- .cards{grid-template-columns:1fr}.c{padding:24px 24px 28px}.c:hover,.c:focus-visible{box-shadow:inset 0 0 0 10px #111}
  .cta{padding:70px 0 44px}.cta h2{font-size:23px}
  .steps{grid-template-columns:1fr}
  .pr{margin-left:0}
@@ -220,13 +204,12 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 .w .tag .b{background:#2b6cff;color:#fff}.w .tag .d{background:#fff;color:#111}.w .tag .lv{background:#03c75a;color:#fff}
 .toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:70}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.c .ph .thumb .win{width:56%}
 .ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em;flex:none}
 .thumb .big-e .ico,.slide .bg.gr b .ico{stroke-width:1.25}
 .slide .bg.gr b{color:#fff;opacity:.85}.thumb .big-e{color:#fff}
 .seo-all a b .ico{color:var(--acc);margin-right:4px}.w .ov .lc .ico,.recent a .ico{margin-right:2px}
 .float .ico{width:18px;height:18px}
-.c .ph .thumb .win u em{position:static;width:auto;height:auto;background:none;box-shadow:none;display:inline-flex;border-radius:0}.cta h2 span .ico{color:var(--acc2)}
+.cta h2 span .ico{color:var(--acc2)}
 @media (max-width:640px){.thumb .win{width:74%}.thumb .win u{flex-direction:column;gap:2px;font-size:11.5px;line-height:1.2}.thumb .win u em{font-size:22px}.thumb .big-e{font-size:80px}.slide .bg.gr b{opacity:.22;margin-right:-12vw;font-size:90vw}}
 
 </style>
