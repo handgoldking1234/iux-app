@@ -266,7 +266,6 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
     <div class="tabs" id="tabs" role="toolbar" aria-label="앱 분류"></div>
     <label class="find"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="앱·기능·분야 검색" aria-label="앱 찾기"></label>
    </div>
-   <div class="recent" id="recent" hidden></div>
    <div class="works" id="works"></div>
    <button class="plus" id="plus" type="button" aria-label="앱 더 보기"></button>
   </div>
@@ -826,7 +825,7 @@ $('q').addEventListener('input',function(){st.q=this.value;st.learn='';if(this.v
 /* 최근에 연 앱 (내 기기에만 저장) */
 function getR(){try{return JSON.parse(localStorage.getItem('iux_recent')||'[]')}catch(e){return[]}}
 function remember(id){try{var r=getR().filter(function(x){return x!==id});r.unshift(id);localStorage.setItem('iux_recent',JSON.stringify(r.slice(0,6)))}catch(e){}recent()}
-function recent(){var r=getR().map(byId).filter(function(a){return a&&href(a)});$('recent').hidden=!r.length;$('recent').innerHTML='<span>최근 연 앱</span>'+r.map(function(a){return '<a href="'+href(a)+'" target="_blank" rel="noopener" data-id="'+a.id+'">'+ic(a.e)+' '+esc(a.t)+'</a>'}).join('')}
+function recent(){}
 var tt=null;function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2200)}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-id]');if(!a)return;var g=byId(a.dataset.id);
  if(g&&!href(g)){e.preventDefault();toast(g.t+' — 공개 준비 중이에요');return}remember(a.dataset.id)});
