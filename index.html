@@ -212,6 +212,7 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 .cta h2 span .ico{color:var(--acc2)}
 @media (max-width:640px){.thumb .win{width:74%}.thumb .win u{flex-direction:column;gap:2px;font-size:11.5px;line-height:1.2}.thumb .win u em{font-size:22px}.thumb .big-e{font-size:80px}.slide .bg.gr b{opacity:.22;margin-right:-12vw;font-size:90vw}}
 
+main{padding-top:72px}
 /* ===== 앱 아이콘 그리드 (홈 화면 스타일) ===== */
 .works{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))!important;gap:38px 18px!important;max-width:1120px;margin:0 auto}
 .app{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;outline:none}
@@ -244,7 +245,7 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 <body>
 
 <div class="prog" id="prog"></div>
-<header id="hd">
+<header id="hd" class="solid">
  <div class="hd">
   <a class="logo" href="#top"><span class="mark">I</span><span class="lt">IUX<em>Work</em></span></a>
   <nav class="gnb" aria-label="주 메뉴"><a href="#apps">WORK</a><a href="#process">PROCESS</a><a href="#about">ABOUT</a></nav>
@@ -256,8 +257,6 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 </header>
 
 <main id="top">
- <section class="hero" id="hero" aria-roledescription="carousel" aria-label="추천 앱"></section>
-
  <section class="sec" id="apps">
   <div class="in">
    <h2 class="tit">IUX <b>Work</b></h2>
@@ -836,9 +835,8 @@ $('rand').onclick=rand;$('rand2').onclick=rand;
 $('sBtn').onclick=function(){smoothTo($('apps'),function(){$('q').focus({preventScroll:true})})};
 $('tg').onclick=function(){smoothTo($('steps'))};
 document.addEventListener('keydown',function(e){if(e.key==='/'&&document.activeElement!==$('q')){e.preventDefault();$('sBtn').click()}});
-addEventListener('scroll',function(){$('hd').classList.toggle('solid',scrollY>40);$('totop').classList.toggle('on',scrollY>500)},{passive:true});
+addEventListener('scroll',function(){$('totop').classList.toggle('on',scrollY>500)},{passive:true});
 $('totop').onclick=function(){LOCK=null;smoothTo(document.body,function(){if(history.replaceState)history.replaceState(null,'',location.pathname+location.search)})};
-document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimeout(timer);else go(cur)});
 $('fCount').textContent=APPS.length+'개 (공개 '+APPS.filter(function(a){return a.url}).length+'개 · 베타 '+APPS.filter(function(a){return a.st==='beta'}).length+'개 · 개발 중 '+APPS.filter(function(a){return a.st==='dev'}).length+'개)';
 
 /* 메뉴 클릭 시 부드럽게 화면 이동 */
@@ -864,14 +862,14 @@ var IO=('IntersectionObserver' in window)&&!reduce?new IntersectionObserver(func
 function reveal(sel,stagger,cols){if(!IO)return;[].forEach.call(document.querySelectorAll(sel),function(el,i){if(el.dataset.rvd)return;el.dataset.rvd=1;el.classList.add('rv');if(stagger)el.style.transitionDelay=((i%(cols||3))*stagger)+'s';IO.observe(el)})}
 function revealAll(){reveal('.sec .tit');reveal('.sec .lead');reveal('.tool');reveal('.w:not(.hide)',.04,8);reveal('.plus');reveal('.cta h2');reveal('.big',.12,1);reveal('.info>*',.1,4)}
 // 화면 위 진행 막대 + 첫 화면이 천천히 밀려 올라가는 효과
-var heroEl=$('hero');
+var heroEl=null;
 function onScrollFx(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$('prog').style.transform='scaleX('+(h>0?y/h:0)+')';
- if(reduce||y>heroEl.offsetHeight)return;var k=y/heroEl.offsetHeight;
+ if(!heroEl||reduce||y>heroEl.offsetHeight)return;var k=y/heroEl.offsetHeight;
  [].forEach.call(heroEl.querySelectorAll('.slide.on .cap'),function(c){c.style.transform='translateY(calc(-46% + '+(y*.35)+'px))';c.style.opacity=1-k*1.3});
  [].forEach.call(heroEl.querySelectorAll('.slide .bg'),function(b){b.style.top=(y*.25)+'px';b.style.bottom=(-y*.25)+'px'});
  heroEl.querySelector('.ctrl').style.opacity=1-k*1.6}
 addEventListener('scroll',onScrollFx,{passive:true});
-hero();tabs();render();recent();revealAll();onScrollFx();spy();
+tabs();render();recent();revealAll();onScrollFx();spy();
 </script>
 </body>
 </html>
