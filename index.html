@@ -212,6 +212,33 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 .cta h2 span .ico{color:var(--acc2)}
 @media (max-width:640px){.thumb .win{width:74%}.thumb .win u{flex-direction:column;gap:2px;font-size:11.5px;line-height:1.2}.thumb .win u em{font-size:22px}.thumb .big-e{font-size:80px}.slide .bg.gr b{opacity:.22;margin-right:-12vw;font-size:90vw}}
 
+/* ===== 앱 아이콘 그리드 (홈 화면 스타일) ===== */
+.works{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))!important;gap:38px 18px!important;max-width:1120px;margin:0 auto}
+.app{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;outline:none}
+.app .ai{position:relative;width:84px;height:84px;border-radius:24px;display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px -8px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.app .ai:after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 55%);pointer-events:none}
+.app .ai .ico{width:40px;height:40px;stroke-width:1.8;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}
+.app:hover .ai,.app:focus-visible .ai{transform:translateY(-5px) scale(1.04);box-shadow:0 18px 32px -10px rgba(0,0,0,.4)}
+.app:active .ai{transform:scale(.94)}
+.app .nb{position:absolute;right:-6px;top:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--acc);color:#fff;font:700 11px/22px var(--en);font-style:normal;border:2px solid #fff}
+.app .sb{position:absolute;left:-6px;top:-6px;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font:700 11px/18px var(--en);font-style:normal;border:2px solid #fff;text-align:center}
+.app .an{margin-top:12px;font-size:14px;font-weight:700;line-height:1.3;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app .ag{margin-top:2px;font-size:11.5px;color:var(--mute);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app.st-dev .ai{filter:saturate(.55);opacity:.82}
+.app .tip{position:absolute;left:50%;bottom:calc(100% - 4px);transform:translate(-50%,6px);width:220px;background:#111;color:#eee;font-size:12px;line-height:1.5;padding:10px 12px;border-radius:10px;text-align:left;opacity:0;pointer-events:none;transition:.2s;z-index:5;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.app .tip em{display:block;margin-top:6px;font-style:normal;font:700 11px var(--en);color:var(--acc2);letter-spacing:.04em}
+.app .tip:after{content:'';position:absolute;left:50%;top:100%;margin-left:-6px;border:6px solid transparent;border-top-color:#111}
+@media (hover:hover){.app:hover .tip,.app:focus-visible .tip{opacity:1;transform:translate(-50%,0)}}
+.legend{display:flex;justify-content:flex-end;gap:18px;margin:-8px 0 36px;font-size:12px;color:var(--mute);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{font-style:normal;width:18px;height:18px;border-radius:50%;display:inline-grid;place-items:center;font:700 10px var(--en);color:#fff}
+@media (max-width:640px){
+ .works{grid-template-columns:repeat(4,1fr)!important;gap:26px 6px!important}
+ .app .tip{display:none}.legend{justify-content:flex-start;margin:-4px 0 28px}
+ .app .ai{width:60px;height:60px;border-radius:18px}.app .ai .ico{width:30px;height:30px}
+ .app .an{font-size:12px;margin-top:8px}.app .ag{display:none}
+ .app .nb{min-width:18px;height:18px;line-height:14px;font-size:9.5px;padding:0 4px;right:-5px;top:-5px}.app .sb{width:18px;height:18px;line-height:14px;font-size:9.5px;left:-5px;top:-5px}
+}
+
 </style>
 </head>
 <body>
@@ -234,11 +261,12 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
  <section class="sec" id="apps">
   <div class="in">
    <h2 class="tit">IUX <b>Work</b></h2>
-   <p class="lead">기획부터 디자인·퍼블리싱까지 직접 만든 앱 — 썸네일을 누르면 바로 열려요</p>
+   <p class="lead">기획부터 디자인·퍼블리싱까지 직접 만든 앱 — 아이콘을 누르면 바로 열려요</p>
    <div class="tool">
     <div class="tabs" id="tabs" role="toolbar" aria-label="앱 분류"></div>
     <label class="find"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="앱·기능·분야 검색" aria-label="앱 찾기"></label>
    </div>
+   <div class="legend" aria-hidden="true"><span><i style="background:var(--acc)">N</i>새로 만든 앱</span><span><i style="background:#111">β</i>베타</span><span><i style="background:#111">…</i>개발 중</span></div>
    <div class="recent" id="recent" hidden></div>
    <div class="works" id="works"></div>
    <button class="plus" id="plus" type="button" aria-label="앱 더 보기"></button>
@@ -763,7 +791,7 @@ var grad=function(a){return 'linear-gradient(135deg,'+a.c[0]+','+a.c[1]+')'};
 function thumb(a){if(a.img)return '<img src="'+a.img+'" alt="'+esc(a.t)+' 화면" loading="lazy" width="640" height="360">';
  return '<div class="thumb" style="background:'+grad(a)+'" role="img" aria-label="'+esc(a.t)+'"><span class="big-e" aria-hidden="true">'+ic(a.e)+'</span><div class="win"><i></i><u><em>'+ic(a.e)+'</em>'+esc(a.t)+'</u></div></div>'}
 var st={tab:'all',q:'',learn:'',more:false};
-var SHOW=9;
+var SHOW=99;
 
 /* 히어로 슬라이드 */
 var cur=0,timer=null,DUR=6500;
@@ -780,10 +808,10 @@ function go(i){var s=document.querySelectorAll('.slide');cur=(i+s.length)%s.leng
 function tagsOf(a){var t=a.tags.slice();if(a.st==='live'||href(a)&&a.url)t.push('live');return t}
 function tabs(){var h='';for(var k in TABS)h+='<button type="button" data-t="'+k+'">'+TABS[k]+'</button>';$('tabs').innerHTML=h;
  [].forEach.call($('tabs').children,function(b){b.onclick=function(){st.tab=b.dataset.t;st.learn='';render()}})}
-function item(a,hide){var t=a.tags,tg='',u=href(a);if(t.indexOf('new')>=0)tg+='<span class="n">NEW</span>';
- tg+='<span class="'+(a.st==='live'?'lv':a.st==='beta'?'b':'d')+'">'+STL[a.st]+'</span>';if(t.indexOf('mobile')>=0)tg+='<span class="s">'+ic('smartphone')+' APP</span>';
- var lc=a.l.map(function(k){return '<span>'+ic(LEARN[k].e)+' '+LEARN[k].t+'</span>'}).join('');
- return '<a class="w'+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'"><div class="ph">'+thumb(a)+'<div class="tag">'+tg+'</div><div class="ov"><b>'+(u?(a.url?'OPEN ▶':'GITHUB ▶'):'COMING SOON')+'</b><small>'+esc(a.d)+'</small><div class="lc">'+lc+'</div></div></div><div class="nm"><h3>'+esc(a.t)+'</h3><p>'+esc(a.g)+' · '+STL[a.st]+'</p></div></a>'}
+function item(a,hide){var t=a.tags,u=href(a),isNew=t.indexOf('new')>=0;
+ return '<a class="w app st-'+a.st+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'" title="'+esc(a.t+' — '+a.d)+'">'+
+  '<span class="ai" style="background:'+grad(a)+'">'+ic(a.e)+(isNew?'<i class="nb">N</i>':'')+(a.st!=='live'?'<i class="sb">'+(a.st==='beta'?'β':'…')+'</i>':'')+'</span>'+
+  '<b class="an">'+esc(a.t)+'</b><span class="ag">'+esc(a.g)+'</span><span class="tip">'+esc(a.d)+'<em>'+(u?(a.url?'열기 ↗':'GitHub ↗'):'공개 준비 중')+'</em></span></a>'}
 function render(){var q=st.q.trim().toLowerCase();
  var list=APPS.filter(function(a){if(st.tab!=='all'&&tagsOf(a).indexOf(st.tab)<0)return false;if(st.learn&&a.l.indexOf(st.learn)<0)return false;
   if(q){var hay=(a.t+' '+a.g+' '+a.d+' '+a.l.map(function(k){return LEARN[k].t}).join(' ')+' '+tagsOf(a).map(function(k){return TABS[k]||''}).join(' ')).toLowerCase();if(hay.indexOf(q)<0)return false}return true});
@@ -836,7 +864,7 @@ addEventListener('scroll',spy,{passive:true});
 var IO=('IntersectionObserver' in window)&&!reduce?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;IO.unobserve(el);el.classList.add('is-in');
   setTimeout(function(){el.classList.add('done')},1000+(parseFloat(el.style.transitionDelay)||0)*1000)})},{rootMargin:'0px 0px -8% 0px',threshold:.1}):null;
 function reveal(sel,stagger,cols){if(!IO)return;[].forEach.call(document.querySelectorAll(sel),function(el,i){if(el.dataset.rvd)return;el.dataset.rvd=1;el.classList.add('rv');if(stagger)el.style.transitionDelay=((i%(cols||3))*stagger)+'s';IO.observe(el)})}
-function revealAll(){reveal('.sec .tit');reveal('.sec .lead');reveal('.tool');reveal('.w:not(.hide)',.1,3);reveal('.plus');reveal('.cta h2');reveal('.big',.12,1);reveal('.info>*',.1,4)}
+function revealAll(){reveal('.sec .tit');reveal('.sec .lead');reveal('.tool');reveal('.w:not(.hide)',.04,8);reveal('.plus');reveal('.cta h2');reveal('.big',.12,1);reveal('.info>*',.1,4)}
 // 화면 위 진행 막대 + 첫 화면이 천천히 밀려 올라가는 효과
 var heroEl=$('hero');
 function onScrollFx(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$('prog').style.transform='scaleX('+(h>0?y/h:0)+')';
