@@ -266,7 +266,6 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
     <div class="tabs" id="tabs" role="toolbar" aria-label="앱 분류"></div>
     <label class="find"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="앱·기능·분야 검색" aria-label="앱 찾기"></label>
    </div>
-   <div class="legend" aria-hidden="true"><span><i style="background:var(--acc)">N</i>새로 만든 앱</span><span><i style="background:#111">β</i>베타</span><span><i style="background:#111">…</i>개발 중</span></div>
    <div class="recent" id="recent" hidden></div>
    <div class="works" id="works"></div>
    <button class="plus" id="plus" type="button" aria-label="앱 더 보기"></button>
@@ -810,7 +809,7 @@ function tabs(){var h='';for(var k in TABS)h+='<button type="button" data-t="'+k
  [].forEach.call($('tabs').children,function(b){b.onclick=function(){st.tab=b.dataset.t;st.learn='';render()}})}
 function item(a,hide){var t=a.tags,u=href(a),isNew=t.indexOf('new')>=0;
  return '<a class="w app st-'+a.st+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'" title="'+esc(a.t+' — '+a.d)+'">'+
-  '<span class="ai" style="background:'+grad(a)+'">'+ic(a.e)+(isNew?'<i class="nb">N</i>':'')+(a.st!=='live'?'<i class="sb">'+(a.st==='beta'?'β':'…')+'</i>':'')+'</span>'+
+  '<span class="ai" style="background:'+grad(a)+'">'+ic(a.e)+'</span>'+
   '<b class="an">'+esc(a.t)+'</b><span class="ag">'+esc(a.g)+'</span><span class="tip">'+esc(a.d)+'<em>'+(u?(a.url?'열기 ↗':'GitHub ↗'):'공개 준비 중')+'</em></span></a>'}
 function render(){var q=st.q.trim().toLowerCase();
  var list=APPS.filter(function(a){if(st.tab!=='all'&&tagsOf(a).indexOf(st.tab)<0)return false;if(st.learn&&a.l.indexOf(st.learn)<0)return false;
