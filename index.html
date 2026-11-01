@@ -214,6 +214,20 @@ header.solid{background:rgba(11,11,13,.92);backdrop-filter:blur(8px);box-shadow:
 
 main{padding-top:0}
 
+/* ===== 애니메이션 ===== */
+.g-logo{gap:.24em}.g-logo span,.g-logo b{display:inline-flex}
+.g-logo i{display:inline-block;font-style:normal;opacity:0;transform:translateY(.45em) rotate(8deg);animation:lt .75s cubic-bezier(.2,.9,.25,1.25) forwards;animation-delay:calc(var(--i)*75ms)}
+.g-logo b i{animation:lt .75s cubic-bezier(.2,.9,.25,1.4) forwards,wave 4.2s ease-in-out infinite;animation-delay:calc(var(--i)*75ms),calc(1.6s + var(--i)*90ms)}
+@keyframes lt{to{opacity:1;transform:none}}
+@keyframes wave{0%,14%,100%{transform:none}6%{transform:translateY(-.12em)}}
+.g-search,.g-home .tabs{opacity:0;animation:fu .7s cubic-bezier(.22,.61,.36,1) forwards}
+.g-search{animation-delay:.55s}.g-home .tabs{animation-delay:.7s}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.works{--b:.85s}
+.app{opacity:0;animation:pop .6s cubic-bezier(.2,.9,.3,1.3) forwards;animation-delay:calc(var(--b) + var(--n)*45ms)}
+@keyframes pop{0%{opacity:0;transform:translateY(22px) scale(.55)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.g-logo i,.g-search,.g-home .tabs,.app{opacity:1!important;animation:none!important;transform:none!important}}
+
 /* ===== 구글 스타일 홈 ===== */
 body{background:#fff}
 .g-home{min-height:calc(100vh - 70px);padding:clamp(56px,13vh,140px) 0 72px}
@@ -283,7 +297,7 @@ section,footer{scroll-margin-top:0}
 <main id="top">
  <section class="g-home" id="apps">
   <div class="in">
-   <h1 class="g-logo"><span>IUX</span> <b>Work</b></h1>
+   <h1 class="g-logo" aria-label="IUX Work"><span aria-hidden="true"><i style="--i:0">I</i><i style="--i:1">U</i><i style="--i:2">X</i></span><b aria-hidden="true"><i style="--i:4">W</i><i style="--i:5">o</i><i style="--i:6">r</i><i style="--i:7">k</i></b></h1>
    <label class="g-search"><span class="g-ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/> <circle cx="11" cy="11" r="8"/></svg></span><input id="q" type="search" placeholder="IUX Work에서 앱 찾기" aria-label="앱 찾기" autocomplete="off"><button type="button" class="g-btn" id="rand" title="랜덤 열기" aria-label="랜덤 열기"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2" ry="2"/> <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/> <path d="M6 18h.01"/> <path d="M10 14h.01"/> <path d="M15 6h.01"/> <path d="M18 9h.01"/></svg></button></label>
    <div class="tabs" id="tabs" role="toolbar" aria-label="앱 분류"></div>
    <div class="works" id="works"></div>
@@ -807,15 +821,16 @@ function go(i){var s=document.querySelectorAll('.slide');cur=(i+s.length)%s.leng
 function tagsOf(a){var t=a.tags.slice();if(a.st==='live'||href(a)&&a.url)t.push('live');if(['web','life','edu','mobile'].some(function(k){return t.indexOf(k)>=0}))t.push('svc');return t}
 function tabs(){var h='';for(var k in TABS)h+='<button type="button" data-t="'+k+'">'+TABS[k]+'</button>';$('tabs').innerHTML=h;
  [].forEach.call($('tabs').children,function(b){b.onclick=function(){st.tab=b.dataset.t;st.learn='';render()}})}
-function item(a,hide){var t=a.tags,u=href(a),isNew=t.indexOf('new')>=0;
- return '<a class="w app st-'+a.st+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'" title="'+esc(a.t+' — '+a.d)+'">'+
+function item(a,hide,n){var t=a.tags,u=href(a),isNew=t.indexOf('new')>=0;
+ return '<a class="w app st-'+a.st+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'" style="--n:'+(n||0)+'" title="'+esc(a.t+' — '+a.d)+'">'+
   '<span class="ai" style="background:'+grad(a)+'">'+ic(a.e)+'</span>'+
   '<b class="an">'+esc(a.t)+'</b><span class="ag">'+esc(a.g)+'</span><span class="tip">'+esc(a.d)+'<em>'+(u?'열기 ↗':'공개 준비 중')+'</em></span></a>'}
 function render(){var q=st.q.trim().toLowerCase();
  var list=APPS.filter(function(a){if(st.tab!=='all'&&tagsOf(a).indexOf(st.tab)<0)return false;if(st.learn&&a.l.indexOf(st.learn)<0)return false;
   if(q){var hay=(a.t+' '+a.g+' '+a.d+' '+a.l.map(function(k){return LEARN[k].t}).join(' ')+' '+tagsOf(a).map(function(k){return TABS[k]||''}).join(' ')).toLowerCase();if(hay.indexOf(q)<0)return false}return true});
  var filtered=st.tab!=='all'||q||st.learn;var lim=st.more||filtered?999:SHOW;
- $('works').innerHTML=list.length?list.map(function(a,i){return item(a,i>=lim)}).join(''):'<div class="empty">찾는 앱이 없어요. 다른 말로 검색해 볼까요?</div>';
+ if(window._r1)$('works').style.setProperty('--b','0s');window._r1=1;
+ $('works').innerHTML=list.length?list.map(function(a,i){return item(a,i>=lim,i)}).join(''):'<div class="empty">찾는 앱이 없어요. 다른 말로 검색해 볼까요?</div>';
  $('plus').hidden=!!filtered||list.length<=SHOW;$('plus').classList.toggle('open',st.more);$('plus').setAttribute('aria-label',st.more?'접기':'앱 더 보기');
  [].forEach.call($('tabs').children,function(b){b.setAttribute('aria-pressed',b.dataset.t===st.tab&&!st.learn?'true':'false')});var ab=$('tabs').querySelector('[aria-pressed="true"]'),tb=$('tabs');if(ab&&tb.scrollWidth>tb.clientWidth){var l=ab.getBoundingClientRect().left-tb.getBoundingClientRect().left+tb.scrollLeft-tb.clientWidth/2+ab.offsetWidth/2;tb.scrollTo({left:Math.max(0,l),behavior:reduce?'auto':'smooth'})}
  if(typeof revealAll==='function'&&IO)revealAll();$('q').placeholder=st.learn?LEARN[st.learn].t+' 앱 '+list.length+'개 (전체 탭으로 해제)':'IUX Work에서 앱 찾기'}
@@ -859,7 +874,7 @@ addEventListener('scroll',spy,{passive:true});
 var IO=('IntersectionObserver' in window)&&!reduce?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;IO.unobserve(el);el.classList.add('is-in');
   setTimeout(function(){el.classList.add('done')},1000+(parseFloat(el.style.transitionDelay)||0)*1000)})},{rootMargin:'0px 0px -8% 0px',threshold:.1}):null;
 function reveal(sel,stagger,cols){if(!IO)return;[].forEach.call(document.querySelectorAll(sel),function(el,i){if(el.dataset.rvd)return;el.dataset.rvd=1;el.classList.add('rv');if(stagger)el.style.transitionDelay=((i%(cols||3))*stagger)+'s';IO.observe(el)})}
-function revealAll(){reveal('.sec .tit');reveal('.sec .lead');reveal('.tool');reveal('.w:not(.hide)',.04,8);reveal('.plus');reveal('.cta h2');reveal('.big',.12,1);reveal('.info>*',.1,4)}
+function revealAll(){reveal('.sec .tit');reveal('.sec .lead');reveal('.tool');reveal('.plus');reveal('.cta h2');reveal('.big',.12,1);reveal('.info>*',.1,4)}
 // 화면 위 진행 막대 + 첫 화면이 천천히 밀려 올라가는 효과
 var heroEl=null;
 function onScrollFx(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$('prog').style.transform='scaleX('+(h>0?y/h:0)+')';
