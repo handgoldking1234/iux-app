@@ -11,3 +11,6 @@
 
 ## Vercel 배포
 GitHub 저장소 `iux-app`에 올리고 vercel.com → Import → Framework **Other** → Deploy.
+
+## 이어서 작업하기
+결정사항·코드 지도·수정 방법은 [CLAUDE.md](CLAUDE.md), 전체 프로젝트 목록은 [IUX 프로젝트 목록](https://github.com/handgoldking1234/iux-app/blob/main/docs/PROJECTS.md)에 있습니다.
