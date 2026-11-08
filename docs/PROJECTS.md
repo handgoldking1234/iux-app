@@ -18,10 +18,10 @@
 | IUX Photo / Illust | [iux-photo](https://github.com/handgoldking1234/iux-photo) | photo.iux.kr | `src/` → 빌드 → 단일 HTML | |
 | 하루공부 | [iux-haru](https://github.com/handgoldking1234/iux-haru) | haru.iux.kr | 프로토타입 + Next.js(`web/`) | 문서 `docs/01~09` |
 | 우리 가계도 | [iux-son](https://github.com/handgoldking1234/iux-son) | son.iux.kr | 단일 HTML + Supabase | 공개 편집, 검색 차단 |
-| AI톡톡 | [iux-aitalk](https://github.com/handgoldking1234/iux-aitalk) | — | 묶음(번들) HTML | 원본 소스 별도 필요 |
+| AI톡톡 | [iux-aitalk](https://github.com/handgoldking1234/iux-aitalk) | aitalk.iux.kr | 묶음(번들) HTML | 원본 소스 별도 필요 |
 | KoreaTalk | [ktalk](https://github.com/handgoldking1234/ktalk) | ktalk-eta.vercel.app | Flutter + Supabase | Phase 1~12 |
-| Seoulmate | [seoulmate](https://github.com/handgoldking1234/seoulmate) | — | Claude Design 시안 | KoreaTalk 화면 |
-| Twinsy | [twinsy](https://github.com/handgoldking1234/twinsy) | Vercel | React(Vite+TS) + Supabase | `DESIGN.md` |
+| Seoulmate | [seoulmate](https://github.com/handgoldking1234/seoulmate) | seoulmate.iux.kr | Claude Design 시안 | KoreaTalk 화면 |
+| Twinsy | [twinsy](https://github.com/handgoldking1234/twinsy) | iux-twinsy.vercel.app | React(Vite+TS) + Supabase | `DESIGN.md` |
 | GlobalTrade | [iux-trade](https://github.com/handgoldking1234/iux-trade) | iux-trade.vercel.app | 퍼블리싱 시안 | |
 | IUX ERP | [iux-erp](https://github.com/handgoldking1234/iux-erp) | iux-erp.vercel.app | Claude Design 시안 | |
 | 빅트리소프트 리뉴얼 | [bts](https://github.com/handgoldking1234/bts) | — | 퍼블리싱 시안 | studio samples에도 사본 |
