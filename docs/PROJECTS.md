@@ -19,6 +19,7 @@
 | 하루공부 | [iux-haru](https://github.com/handgoldking1234/iux-haru) | haru.iux.kr | 프로토타입 + Next.js(`web/`) | 문서 `docs/01~09` |
 | 우리 가계도 | [iux-son](https://github.com/handgoldking1234/iux-son) | son.iux.kr | 단일 HTML + Supabase | 공개 편집, 검색 차단 |
 | AI톡톡 | [iux-aitalk](https://github.com/handgoldking1234/iux-aitalk) | aitalk.iux.kr | 묶음(번들) HTML | 원본 소스 별도 필요 |
+| 북이랑 | [bookirang](https://github.com/handgoldking1234/bookirang) | book.iux.kr | 단일 HTML(빌드) + Vercel 함수(Claude) | 초등 영어 북토킹, `booktalk/` 모듈 분리 |
 | KoreaTalk | [ktalk](https://github.com/handgoldking1234/ktalk) | ktalk-eta.vercel.app | Flutter + Supabase | Phase 1~12 |
 | Seoulmate | [seoulmate](https://github.com/handgoldking1234/seoulmate) | seoulmate.iux.kr | Claude Design 시안 | KoreaTalk 화면 |
 | Twinsy | [twinsy](https://github.com/handgoldking1234/twinsy) | iux-twinsy.vercel.app | React(Vite+TS) + Supabase | `DESIGN.md` |
