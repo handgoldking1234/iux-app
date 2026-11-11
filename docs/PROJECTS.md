@@ -5,7 +5,7 @@
 
 | 서비스 | 저장소 | 주소 | 형태 | 비고 |
 |---|---|---|---|---|
-| 손금왕 Handgold | [iux-handgold](https://github.com/handgoldking1234/iux-handgold) | handgold.iux.kr | 단일 HTML, AI 없음 | 해석 규칙 `docs/rules.md` |
+| 손금왕 Handgold | [iux-handgold](https://github.com/handgoldking1234/iux-handgold) | hand.iux.kr | 단일 HTML, AI 없음 | 해석 규칙 `docs/rules.md` |
 | IUX Work (앱 허브) | [iux-app](https://github.com/handgoldking1234/iux-app) | app.iux.kr | 단일 HTML | 이 목록이 있는 곳 |
 | 민왕게임월드 | [game](https://github.com/handgoldking1234/game) | game.iux.kr | 원페이지 + 게임 HTML, Supabase 통계·대전 | `wip/*` 브랜치 작업 중 |
 | IUX.STUDIO / IUX Cloud | [iux-studio](https://github.com/handgoldking1234/iux-studio) | studio.iux.kr | 정적 + Supabase(iux-cloud) | 공용 백엔드. `iux-art-app` 브랜치 미병합 |
@@ -20,6 +20,9 @@
 | 우리 가계도 | [iux-son](https://github.com/handgoldking1234/iux-son) | son.iux.kr | 단일 HTML + Supabase | 공개 편집, 검색 차단 |
 | AI톡톡 | [iux-aitalk](https://github.com/handgoldking1234/iux-aitalk) | aitalk.iux.kr | 묶음(번들) HTML | 원본 소스 별도 필요 |
 | 북이랑 | [bookirang](https://github.com/handgoldking1234/bookirang) | book.iux.kr | 단일 HTML(빌드) + Vercel 함수(Claude) | 초등 영어 북토킹, `booktalk/` 모듈 분리 |
+| 네아니요 | [neaniyo](https://github.com/handgoldking1234/neaniyo) | neaniyo.iux.kr | 단일 HTML | 연예·이슈 투표, 임베드 카드 |
+| 바로오피스 | [office](https://github.com/handgoldking1234/office) | office.iux.kr | 단일 HTML + PWA | 브라우저 안에서만 파일 처리 |
+| 장표 스튜디오 | [ppt](https://github.com/handgoldking1234/ppt) | ppt.iux.kr | 단일 HTML | AI는 Claude 아티팩트 안에서만 동작 |
 | KoreaTalk | [ktalk](https://github.com/handgoldking1234/ktalk) | ktalk-eta.vercel.app | Flutter + Supabase | Phase 1~12 |
 | Seoulmate | [seoulmate](https://github.com/handgoldking1234/seoulmate) | seoulmate.iux.kr | Claude Design 시안 | KoreaTalk 화면 |
 | Twinsy | [twinsy](https://github.com/handgoldking1234/twinsy) | iux-twinsy.vercel.app | React(Vite+TS) + Supabase | `DESIGN.md` |
