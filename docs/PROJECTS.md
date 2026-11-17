@@ -10,6 +10,7 @@
 | 민왕게임월드 | [game](https://github.com/handgoldking1234/game) | game.iux.kr | 원페이지 + 게임 HTML, Supabase 통계·대전 | `wip/*` 브랜치 작업 중 |
 | IUX.STUDIO / IUX Cloud | [iux-studio](https://github.com/handgoldking1234/iux-studio) | studio.iux.kr | 정적 + Supabase(iux-cloud) | 공용 백엔드. `iux-art-app` 브랜치 미병합 |
 | IUX ART | [iux-art](https://github.com/handgoldking1234/iux-art) | art.iux.kr | main 정적 / `nextjs` 브랜치 실서비스 | 작가 사이트 /eunseo /dalhae /opal |
+| 내일 (naeilo) | [todo](https://github.com/handgoldking1234/todo) | naeilo.iux.kr | 단일 HTML | 아이·보호자 할 일 앱 |
 | 웹툰보드 | [iux-webtoon](https://github.com/handgoldking1234/iux-webtoon) | toon.iux.kr | main 단일 HTML / `dev` Next.js | |
 | 시놉 | [iux-synop](https://github.com/handgoldking1234/iux-synop) | synop.iux.kr | 단일 HTML | 정본. `synop`은 예전 사본 |
 | 교정왕 | [iux-ediking](https://github.com/handgoldking1234/iux-ediking) | ediking.iux.kr | 퍼블리싱 시안 | |
