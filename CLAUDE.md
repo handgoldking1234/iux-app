@@ -22,6 +22,7 @@ index.html     사이트 전체 (APPS 목록 포함)
 vercel.json    캐시 헤더
 robots.txt, sitemap.xml
 docs/PROJECTS.md  전체 프로젝트 목록
+board/index.html  진행 현황 보드 (app.iux.kr/board/, 검색 제외)
 ```
 
 ## 코드 지도 (index.html)
@@ -31,6 +32,7 @@ docs/PROJECTS.md  전체 프로젝트 목록
 - `<script type="application/ld+json">` — 검색엔진용 앱 목록. APPS를 바꾸면 여기도 맞출 것
 
 ## 자주 하는 수정
+- **진행 현황 갱신:** `board/index.html` 맨 아래 스크립트의 `UPDATED`, `P`(카드), `LIST`(날짜만 확인), `IDEAS`, `CLEAN`만 고친다. 공개 페이지라 비밀값·보안 허점·개인 정보는 적지 않는다. 허브의 「진행 현황」 버튼은 `tabs()`에서 만든다.
 - **앱 추가:** `APPS`에 한 줄 추가 → JSON-LD 목록과 `sitemap.xml`에도 추가 → `docs/PROJECTS.md`에도 추가
 
 ## 브랜치

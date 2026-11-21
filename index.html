@@ -246,6 +246,8 @@ body{background:#fff}
 .g-home .tabs button:hover{background:#ecdfd8;color:#202124}
 .g-home .tabs button[aria-pressed="true"]{background:#202124;color:#fff;font-weight:600}
 .g-home .tabs button[aria-pressed="true"]:after{display:none}
+.tab-board{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;background:var(--acc);color:#fff;font-size:13.5px;font-weight:600;text-decoration:none;flex:none;white-space:nowrap;transition:background .2s,transform .2s}.tab-board:hover{background:#e85a05;transform:translateY(-1px)}.tab-board .ico{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:640px){.tab-board{padding:7px 14px;font-size:13px}}
 .g-home .works{max-width:1000px;grid-template-columns:repeat(8,1fr)!important}
 @media (max-width:980px){.g-home .works{grid-template-columns:repeat(6,1fr)!important}}
 @media (max-width:640px){.g-home .works{grid-template-columns:repeat(4,1fr)!important}.g-home .tabs{padding:4px 20px 10px!important;margin-left:-20px!important;scroll-padding:0 20px}}
@@ -1139,8 +1141,8 @@ function go(i){var s=document.querySelectorAll('.slide');cur=(i+s.length)%s.leng
 
 /* 앱 목록 */
 function tagsOf(a){var t=a.tags.slice();if(a.st==='live'||href(a)&&a.url)t.push('live');if(['web','life','edu','mobile'].some(function(k){return t.indexOf(k)>=0}))t.push('svc');return t}
-function tabs(){var h='';for(var k in TABS)h+='<button type="button" data-t="'+k+'">'+TABS[k]+'</button>';$('tabs').innerHTML=h;
- [].forEach.call($('tabs').children,function(b){b.onclick=function(){st.tab=b.dataset.t;st.learn='';render()}})}
+function tabs(){var h='';for(var k in TABS)h+='<button type="button" data-t="'+k+'">'+TABS[k]+'</button>';h+='<a class="tab-board" href="/board/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg>진행 현황</a>';$('tabs').innerHTML=h;
+ [].forEach.call($('tabs').querySelectorAll('button'),function(b){b.onclick=function(){st.tab=b.dataset.t;st.learn='';render()}})}
 function item(a,hide,n){var t=a.tags,u=href(a),isNew=t.indexOf('new')>=0;
  return '<a class="w app st-'+a.st+(hide?' hide':'')+'" href="'+(u||'#')+'"'+(u?' target="_blank" rel="noopener"':' data-soon="1"')+' data-id="'+a.id+'" style="--n:'+(n||0)+'" title="'+esc(a.t+' — '+a.d)+'">'+
   '<span class="ai" style="background:'+grad(a)+'">'+ic(a.e)+'</span>'+
@@ -1152,7 +1154,7 @@ function render(){var q=st.q.trim().toLowerCase();
  if(window._r1)$('works').style.setProperty('--b','0s');window._r1=1;
  $('works').innerHTML=list.length?list.map(function(a,i){return item(a,i>=lim,i)}).join(''):'<div class="empty">찾는 앱이 없어요. 다른 말로 검색해 볼까요?</div>';
  $('plus').hidden=!!filtered||list.length<=SHOW;$('plus').classList.toggle('open',st.more);$('plus').setAttribute('aria-label',st.more?'접기':'앱 더 보기');
- [].forEach.call($('tabs').children,function(b){b.setAttribute('aria-pressed',b.dataset.t===st.tab&&!st.learn?'true':'false')});var ab=$('tabs').querySelector('[aria-pressed="true"]'),tb=$('tabs');if(ab&&tb.scrollWidth>tb.clientWidth){var l=ab.getBoundingClientRect().left-tb.getBoundingClientRect().left+tb.scrollLeft-tb.clientWidth/2+ab.offsetWidth/2;tb.scrollTo({left:Math.max(0,l),behavior:reduce?'auto':'smooth'})}
+ [].forEach.call($('tabs').querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',b.dataset.t===st.tab&&!st.learn?'true':'false')});var ab=$('tabs').querySelector('[aria-pressed="true"]'),tb=$('tabs');if(ab&&tb.scrollWidth>tb.clientWidth){var l=ab.getBoundingClientRect().left-tb.getBoundingClientRect().left+tb.scrollLeft-tb.clientWidth/2+ab.offsetWidth/2;tb.scrollTo({left:Math.max(0,l),behavior:reduce?'auto':'smooth'})}
  if(typeof revealAll==='function'&&IO)revealAll();$('q').placeholder=st.learn?LEARN[st.learn].t+' 앱 '+list.length+'개 (전체 탭으로 해제)':'IUX Work에서 앱 찾기'}
 $('plus').onclick=function(){st.more=!st.more;render();if(!st.more)smoothTo($('apps'))};
 $('q').addEventListener('input',function(){st.q=this.value;st.learn='';if(this.value)st.tab='all';render()});
