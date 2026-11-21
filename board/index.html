@@ -69,6 +69,7 @@ header.top .in{display:flex;align-items:center;justify-content:space-between;hei
 .row{display:grid;grid-template-columns:170px 1fr 120px 92px;gap:14px;align-items:center;padding:13px 18px;border-top:1px solid var(--line);font-size:13.5px}
 .row:first-child{border-top:0}
 .row b{font-size:14.5px}
+.row.cr{grid-template-columns:240px 1fr auto}
 .row .g{color:var(--sub)}
 .row .dt{color:var(--mute);font:500 12.5px var(--en)}
 .row a{text-decoration:none;color:var(--sub);font-size:12.5px}.row a:hover{color:var(--acc)}
@@ -78,7 +79,7 @@ header.top .in{display:flex;align-items:center;justify-content:space-between;hei
 .note{margin:36px 0 0;padding:16px 18px;border-radius:14px;background:#f6f6f7;font-size:13px;color:var(--sub)}
 footer{margin-top:48px;border-top:1px solid var(--line);padding:22px 0 40px;text-align:center;font-size:12.5px;color:var(--mute)}
 [hidden]{display:none!important}
-@media (max-width:860px){.sum{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.todo ul{grid-template-columns:1fr}.row{grid-template-columns:1fr auto;gap:4px 12px}.row .g{grid-column:1/-1;order:3}.row a{display:none}}
+@media (max-width:860px){.row.cr{grid-template-columns:1fr auto}.sum{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.todo ul{grid-template-columns:1fr}.row{grid-template-columns:1fr auto;gap:4px 12px}.row .g{grid-column:1/-1;order:3}.row a{display:none}}
 @media (max-width:520px){.in{padding:0 18px}.hero{padding-top:30px}.hero h1{font-size:27px}.sum{grid-template-columns:repeat(2,1fr);gap:10px}.sum button{padding:13px 14px}.sum .n{font-size:26px}.card{padding:18px}.todo{padding:18px}.stamp{display:none}}
 </style>
 </head>
@@ -114,7 +115,7 @@ footer{margin-top:48px;border-top:1px solid var(--line);padding:22px 0 40px;text
 
 <script>
 /* ===== 데이터: 여기만 고치면 보드가 바뀌어요 ===== */
-var UPDATED='2026-11-21 10:30';
+var UPDATED='2026-11-21 18:10';
 
 var STATUS={
  focus:{t:'집중',c:'var(--focus)',d:'최근 이틀 안에 작업한 프로젝트'},
@@ -127,13 +128,13 @@ var STATUS={
 /* stage: 기획·디자인·개발·출시 준비·운영 / p: 진행률(%) */
 var P=[
  {id:'haru',t:'하루공부',g:'초·중·고 통합 학습',s:'focus',stage:'출시 준비',p:65,last:'11/21',url:'https://haru.iux.kr',repo:'iux-haru',
-  done:['로그인 화면 간편 로그인을 카카오·네이버·Google 세 개로 정리','과목 이름 정리(한자어, 한국사)'],
-  next:['실제 서버 기준 자동 테스트 통과시키기','연산·타자를 공통 학습 엔진으로 옮기기','공개 대결방을 가짜 데이터에서 실제 데이터로','관리자 1차: 지표 대시보드·문의함·유입 수집','보호자 동의 절차와 약관·개인정보처리방침','AI로 쓴 문항 교사 검수'],
-  me:['실제 보호자 계정으로 전체 화면 점검','카카오·네이버·Google 개발자 콘솔에 앱 등록'],
+  done:['간편 로그인을 카카오·네이버·Google 세 개로 정리하고 로고 크기 맞춤','과목 이름 정리(한자어, 한국사)'],
+  next:['실제 서버 기준 자동 테스트 통과시키기','연산·타자를 공통 학습 엔진으로 옮기기','공개 대결방을 가짜 데이터에서 실제 데이터로','관리자 1차: 지표 대시보드·문의함·유입 수집','약관·개인정보처리방침 초안(보호자 동의 포함)'],
+  me:['실제 보호자 계정으로 전체 화면 점검','카카오·네이버·Google 개발자 콘솔에 앱 등록','AI로 쓴 문항 교사 검수 맡기기'],
   dec:['하루 분량 10분으로 줄일지','요금제(코드 나눔 / 과목당 / 가족 구독)','음성: 브라우저 TTS 또는 클라우드 음성','상표 출원 진행 여부']},
- {id:'titan',t:'거인 토벌전',g:'3D 액션 게임 · 민왕게임월드',s:'focus',stage:'개발',p:60,last:'11/21',url:'https://game.iux.kr',repo:'game',
-  done:['여성형 거인 모델 추가(격투 동작 연결)','챕터별 배경 음악 4곡 넣기'],
-  next:['작업 브랜치를 main에 합쳐 game.iux.kr에 반영','배경 음악 용량 줄이기(지금 약 18MB)'],
+ {id:'titan',t:'거인 토벌전',g:'3D 액션 게임 · 민왕게임월드',s:'focus',stage:'개발',p:65,last:'11/21',url:'https://game.iux.kr',repo:'game',
+  done:['여성형 거인 모델 추가(격투 동작 연결)','챕터별 배경 음악 4곡','쓰러진 병사 장비 회수 · 부스터 대시 · 칼날 교체 동작'],
+  next:['작업 브랜치를 main에 합쳐 game.iux.kr에 반영','모바일에 대시·칼날 교체 버튼 추가','배경 음악 용량 줄이기(지금 약 18MB)'],
   me:[],
   dec:['사이트에 올릴지, 언제 올릴지','3D 모델 출처·라이선스 확인']},
  {id:'ocr',t:'IUX OCR',g:'로컬 문서 인식',s:'focus',stage:'운영 개선',p:75,last:'11/21',url:'https://ocr.iux.kr',repo:'iux-ocr',
@@ -142,8 +143,8 @@ var P=[
   me:['설치형에서 학습 뒤 learn.json이 생기는지 확인'],
   dec:[]},
  {id:'webtoon',t:'웹툰보드',g:'웹툰 컷 편집기',s:'focus',stage:'출시 준비',p:60,last:'11/20',url:'https://toon.iux.kr',repo:'iux-webtoon',
-  done:['main과 dev를 하나로 합쳐 실제 AI 연결','AI 남은 횟수 표시 정리','중복 Vercel 프로젝트 정리'],
-  next:['회원 기능(Supabase) 연결','출시 전 테스트 모드 끄기','결제(프로 요금제) 연결','편집기를 React로 단계적으로 옮기기'],
+  done:['main과 dev를 하나로 합쳐 실제 AI 연결','AI 그림 기본 모델을 나노바나나 Pro로, GPT 이미지 선택 추가','AI 남은 횟수 표시 정리'],
+  next:['회원 기능(Supabase) 연결 → AI 사용 기록 저장','등장인물 캐릭터 시트 만들기(얼굴 일관성)','출시 전 테스트 모드 끄기','결제(프로 요금제) 연결'],
   me:['Vercel에 시험 계정 환경 변수 넣고 다시 배포','AI 서비스 월 지출 한도 걸기'],
   dec:['정식 공개 시점']},
  {id:'photo',t:'IUX Photo',g:'온라인 포토샵',s:'focus',stage:'베타',p:80,last:'11/20',url:'https://photo.iux.kr',repo:'iux-photo',
@@ -151,10 +152,15 @@ var P=[
   next:['실사용 피드백 반영'],
   me:['실제 휴대폰에서 써 보고 불편한 점 알려 주기'],
   dec:[]},
- {id:'neaniyo',t:'네아니요',g:'연예·이슈 투표',s:'active',stage:'출시 준비',p:70,last:'11/19',url:'https://neaniyo.iux.kr',repo:'neaniyo',
-  done:['서버(DB) 연결 복구','공유 미리보기 이미지 확인','중복 배포 프로젝트 정리'],
+ {id:'art',t:'IUX ART',g:'출장 행사 아트 · 작가 사이트',s:'focus',stage:'운영',p:85,last:'11/21',url:'https://art.iux.kr',repo:'iux-art',
+  done:['비즈공예·타로카드·손마사지 현장 사진 16장 추가','공연 프로그램 이름 정리'],
+  next:['사진 뒤 흐린 배경이 안 나오는 문제 고치기','문의 메일 발송 다시 연결(Resend)'],
+  me:['배포된 페이지 한 번 확인'],
+  dec:['nextjs 브랜치를 계속 맞출지, 정리할지']},
+ {id:'neaniyo',t:'네아니요',g:'연예·이슈 투표',s:'focus',stage:'출시 준비',p:72,last:'11/21',url:'https://neaniyo.iux.kr',repo:'neaniyo',
+  done:['서버(DB) 연결 복구','메일 발송(Resend)에 iux.kr 도메인 등록','중복 배포 프로젝트 정리'],
   next:['사진 투표 이미지를 저장소(Storage)로 옮기기','성별·연령·지역 실제 통계 연결','카카오·Google 로그인 추가','정식 오픈 때 시험 투표 끄기'],
-  me:['사이트에 이메일로 로그인 → 관리자 지정 요청','피드 자동 수집 예약 작업 만들기(3시간마다)','메일 발송(Resend) 연결','개인정보 보호책임자 정보 전달'],
+  me:['가비아 로그인 → 메일 인증용 DNS 4개 넣기','Resend API 키 만들어 Vercel에 넣기','사이트에 이메일로 로그인 → 관리자 지정 요청','피드 자동 수집 예약 작업 만들기(3시간마다)','개인정보 보호책임자 정보 전달'],
   dec:['예시 투표 남길지','투표마다 다른 카톡 미리보기 이미지 만들지']},
  {id:'bookirang',t:'북이랑',g:'AI 영어 북토킹',s:'active',stage:'베타',p:null,last:'11/18',url:'https://book.iux.kr',repo:'bookirang',
   done:['중복 Vercel 프로젝트 정리'],next:['진행 내역 확인 필요'],me:[],dec:[]},
@@ -167,7 +173,6 @@ var LIST=[
  {t:'내일',g:'아이 할 일·스케줄',s:'wait',last:'11/15',url:'https://naeilo.iux.kr',repo:'todo'},
  {t:'ScanQC',g:'스캔 검수·보정',s:'wait',last:'11/15',url:'https://qc.iux.kr',repo:'iux-qc'},
  {t:'바로오피스',g:'모바일 웹 오피스',s:'wait',last:'11/11',url:'https://office.iux.kr',repo:'office'},
- {t:'IUX ART',g:'출장 행사 아트 · 작가 사이트',s:'wait',last:'11/11',url:'https://art.iux.kr',repo:'iux-art'},
  {t:'장표 스튜디오',g:'AI 장표 제작',s:'wait',last:'11/10',url:'https://ppt.iux.kr',repo:'ppt'},
  {t:'IUX.STUDIO',g:'홈페이지 + IUX Cloud',s:'wait',last:'11/9',url:'https://studio.iux.kr',repo:'iux-studio'},
  {t:'손금왕',g:'AI 손금 풀이',s:'pause',last:'11/7',url:'https://hand.iux.kr',repo:'iux-handgold'},
@@ -180,6 +185,12 @@ var LIST=[
  {t:'GlobalTrade',g:'트레이딩 플랫폼 시안',s:'pause',last:'11/7',url:'https://iux-trade.vercel.app',repo:'iux-trade'},
  {t:'IUX ERP',g:'ERP·GW 대시보드 시안',s:'pause',last:'11/7',url:'https://iux-erp.vercel.app',repo:'iux-erp'},
  {t:'KoreaTalk',g:'영상통화 언어교환',s:'pause',last:'11/1',url:'https://ktalk-eta.vercel.app',repo:'ktalk'}
+];
+
+/* 공모전 */
+var CONTESTS=[
+ {t:'조달청 AI 게임·콘텐츠 공모전',d:'11/22 마감',x:'「쏙쏙! 나라장터」 게임·시연 영상 완성, 카트 레이스 버전 검토 중 → 하나 골라 제출'},
+ {t:'경남 3D 웹툰 배경 활용 공모전',d:'12/6 마감',x:'진주 남강 배경으로 16컷 기획·프롬프트 완료 → 그림 제작'}
 ];
 
 var IDEAS=[['맞수','게임 메이트 매칭'],['오르니','유튜브 급상승 랭킹'],['오맛','지역 맛집 랭킹'],['AI 웹툰 스튜디오','AI 웹툰 제작'],['오늘의 음식','날씨 반응형 외식 추천'],['세모왕','상품 랭킹 큐레이션'],['요픽','증시 트렌드 포털'],['이슈모아','커뮤니티 이슈 요약'],['모닝 브리핑','아침 브리핑 대시보드'],['SnapKit','윈도우 화면 캡쳐']];
@@ -225,6 +236,7 @@ function draw(){
   s+='<section class="sec" data-g="'+g[0]+'"><div class="in"><h2>'+g[1]+' <span class="c">'+list.length+'</span></h2><p class="d">'+STATUS[g[0]].d+'</p><div class="grid">'+list.map(card).join('')+'</div></div></section>'});
  [['wait','잠시 멈춤'],['pause','오래 멈춤']].forEach(function(g){var list=LIST.filter(function(r){return r.s===g[0]});
   s+='<section class="sec" data-g="'+g[0]+'"><div class="in"><h2>'+g[1]+' <span class="c">'+list.length+'</span></h2><p class="d">'+STATUS[g[0]].d+' · 진행 내역 확인 필요</p><div class="rows">'+list.map(row).join('')+'</div></div></section>'});
+ s+='<section class="sec" data-g="contest"><div class="in"><h2>공모전 <span class="c">'+CONTESTS.length+'</span></h2><p class="d">마감이 가까운 순서예요</p><div class="rows">'+CONTESTS.map(function(c){return '<div class="row cr"><b>'+esc(c.t)+'</b><span class="g">'+esc(c.x)+'</span><span class="dt"><span class="badge" style="background:var(--focus)">'+esc(c.d)+'</span></span></div>'}).join('')+'</div></div></section>';
  s+='<section class="sec" data-g="idea"><div class="in"><h2>구상 중 <span class="c">'+IDEAS.length+'</span></h2><p class="d">'+STATUS.idea.d+'</p><div class="chips">'+IDEAS.map(function(i){return '<span>'+esc(i[0])+'<small>'+esc(i[1])+'</small></span>'}).join('')+'</div></div></section>';
  $('secs').innerHTML=s;
  apply()}
@@ -232,7 +244,7 @@ function draw(){
 function apply(){
  [].forEach.call($('sum').children,function(b){b.setAttribute('aria-pressed',b.dataset.s===cur?'true':'false')});
  [].forEach.call(document.querySelectorAll('.sec'),function(sec){sec.hidden=cur!=='all'&&sec.dataset.g!==cur});
- $('todo').hidden=cur!=='all'}
+ $('todo').hidden=cur!=='all';var cs=document.querySelector('[data-g="contest"]');if(cs)cs.hidden=cur!=='all'}
 
 draw();
 </script>
